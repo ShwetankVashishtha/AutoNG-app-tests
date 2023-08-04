@@ -16,12 +16,12 @@
 
     <dependencies>
         <dependency>
-            <groupId>com.autong.test</groupId>
+            <groupId>in.autong.test</groupId>
             <artifactId>autong-automation-builder</artifactId>
             <version>1.0.0</version>
         </dependency>
         <dependency>
-            <groupId>com.autong.test</groupId>
+            <groupId>in.autong.test</groupId>
             <artifactId>autong-api-automation-builder</artifactId>
             <version>1.0.0</version>
         </dependency>

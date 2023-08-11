@@ -12,7 +12,7 @@ public class UsersSteps {
 
     @When("user executes post call to add test result")
     public void postAddTestResult() {
-        response = RestResources.get("https://reqres.in/api/users");
+        response = RestResources.get("https://reqres.in", "/api/users");
         System.out.println(response.asPrettyString());
     }
 

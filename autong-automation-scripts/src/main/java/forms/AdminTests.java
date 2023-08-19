@@ -2,6 +2,7 @@ package forms;
 
 import com.autong.base.PageBase;
 import com.autong.base.TestBase;
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,9 +11,9 @@ import java.util.logging.Logger;
 
 import static locators.Locators.AdminLocators.*;
 
+@Getter
 public class AdminTests extends PageBase {
-
-    TestBase testBase = new TestBase();
+    
     Logger logger = Logger.getLogger("AutoNG logger");
 
     /**
@@ -27,49 +28,25 @@ public class AdminTests extends PageBase {
     @FindBy(xpath = ADMIN_SIDE_NAV)
     private WebElement adminSideNav;
 
-    public WebElement getAdminSideNav() {
-        return adminSideNav;
-    }
-
     @FindBy(xpath = USER_ROLES_LABEL)
     private List<WebElement> userRolesLabel;
-
-    public List<WebElement> getUserRolesLabel() {
-        return userRolesLabel;
-    }
 
     @FindBy(xpath = USER_ROLES_DROPDOWN)
     private WebElement userRolesDropdown;
 
-    public WebElement getUserRolesDropdown() {
-        return userRolesDropdown;
-    }
-
     @FindBy(xpath = FOOTER_LINK)
     private WebElement footerLink;
-
-    public WebElement getFooterLink() {
-        return footerLink;
-    }
 
     @FindBy(xpath = COPYRIGHT_YEAR)
     private WebElement copyrightYear;
 
-    public WebElement getCopyrightYear() {
-        return copyrightYear;
-    }
-
     @FindBy(xpath = SEARCH_BTN)
     private WebElement searchBtn;
 
-    public WebElement getSearchBtn() {
-        return searchBtn;
-    }
-
     public void clickAdminSideNavLink() {
-        testBase.waitForElementToBeClickable(10, getAdminSideNav());
+        TestBase.waitForElementToBeClickable(10, getAdminSideNav());
         getAdminSideNav().click();
-        testBase.implicitWait(10);
+        TestBase.implicitWait(10);
     }
 
     public void selectValueFromUserRoleDropdown() {
@@ -81,30 +58,30 @@ public class AdminTests extends PageBase {
     }
 
     public void scrollToPageFooter() {
-        testBase.pause(1000);
-        testBase.scrollToBottom();
-        testBase.waitForElementVisible(10, getFooterLink());
+        TestBase.pause(1000);
+        TestBase.scrollToBottom();
+        TestBase.waitForElementVisible(10, getFooterLink());
     }
 
     public String getCopyrightYearText() {
-        testBase.waitForElementVisible(10, getCopyrightYear());
+        TestBase.waitForElementVisible(10, getCopyrightYear());
         return getCopyrightYear().getText();
     }
 
     public void clickFooterHyperlink() {
-        testBase.waitForElementVisible(10, getFooterLink());
-        testBase.waitForElementToBeClickable(10, getFooterLink());
+        TestBase.waitForElementVisible(10, getFooterLink());
+        TestBase.waitForElementToBeClickable(10, getFooterLink());
         getFooterLink().click();
-        testBase.switchBrowserTab(1);
+        TestBase.switchBrowserTab(1);
     }
 
     public void openContextMenu() {
-        testBase.contextClick(getSearchBtn());
-        testBase.pause(4000);
+        TestBase.contextClick(getSearchBtn());
+        TestBase.pause(4000);
     }
 
     public void mouseHoverSearchBtn() {
-        testBase.mouseHover(getSearchBtn());
-        testBase.pause(4000);
+        TestBase.mouseHover(getSearchBtn());
+        TestBase.pause(4000);
     }
 }

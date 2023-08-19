@@ -31,11 +31,4 @@ public class Locators {
         public static final String BROWSE_BTN = "//div[@class='oxd-file-button']";
         public static final String FILE_PATH_INPUT = "//input[@type='file']";
     }
-
-    @NoArgsConstructor(access = AccessLevel.PRIVATE)
-    public class AndroidLocators {
-        public static final String WELCOME_TO_WHATSAPP_SCREEN = "com.whatsapp:id/action_bar_root";
-        public static final String AGREE_AND_CONTINUE_BTN = "com.whatsapp:id/eula_accept";
-        public static final String ENTER_YOUR_PHONE_NUMBER_SCREEN = "com.whatsapp:id/register_phone_toolbar_title";
-    }
 }

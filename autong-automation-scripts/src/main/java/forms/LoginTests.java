@@ -1,20 +1,25 @@
 package forms;
 
+import com.autong.base.PageBase;
+import com.autong.base.TestBase;
+import com.autong.utilities.annotations.ElementMeta;
+import com.autong.utilities.annotations.ObjectLoaderMeta;
+import com.autong.utilities.annotations.WaitForLoad;
+import com.autong.utilities.annotations.WebSpecificField;
 import com.autong.utilities.fileOperations.PropertyManager;
+import com.autong.utilities.meta.LocateUsing;
+import com.autong.utilities.meta.Platform;
+import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import com.autong.base.PageBase;
-import com.autong.base.TestBase;
-
-import java.net.MalformedURLException;
 
 import static locators.Locators.LoginLocators.*;
 
+@Getter
 public class LoginTests extends PageBase {
 
     PropertyManager pm = new PropertyManager();
-    TestBase testBase = new TestBase();
 
     /**
      * Instantiates a new adds the feedback page.
@@ -25,52 +30,39 @@ public class LoginTests extends PageBase {
         super(driver);
     }
 
-    @FindBy(xpath = USERNAME)
-    private WebElement username;
+    @WebSpecificField
+    @WaitForLoad
+    @ElementMeta(locateUsing = LocateUsing.XPATH, elementName = "username field", locator = USERNAME)
+    public WebElement username;
 
-    public WebElement getUsername() {
-        return username;
-    }
-
-    @FindBy(xpath = PASSWORD)
-    private WebElement password;
-
-    public WebElement getPassword() {
-        return password;
-    }
+    @ElementMeta(locateUsing = LocateUsing.XPATH, elementName = "password field", locator = PASSWORD)
+    public WebElement password;
 
     @FindBy(xpath = LOGIN)
     private WebElement login;
 
-    public WebElement getLogin() {
-        return login;
-    }
-
     @FindBy(xpath = DASHBOARD_LOGO)
     private WebElement dashboardLogo;
 
-    public WebElement getDashboardLogo() {
-        return dashboardLogo;
-    }
-
-    public void openUrl() throws MalformedURLException {
-        testBase.setupBrowser(pm.getResourceBundle.getProperty("browser"),
+    @ObjectLoaderMeta(platform = Platform.WEB)
+    public void openUrl() {
+        TestBase.setupBrowser(pm.getResourceBundle.getProperty("browser"),
                 pm.getResourceBundle.getProperty("BASE_URL"));
     }
 
     public void enterCredentials(String username, String password) {
-        testBase.waitForElementToBeClickable(10, getUsername());
+        TestBase.waitForElementVisible(10, getUsername());
         getUsername().clear();
         getUsername().sendKeys(username);
-        testBase.waitForElementToBeClickable(10, getPassword());
+        TestBase.waitForElementToBeClickable(10, getPassword());
         getPassword().clear();
         getPassword().sendKeys(password);
     }
 
     public void clickLogin() {
-        testBase.waitForElementToBeClickable(10, getLogin());
+        TestBase.waitForElementToBeClickable(10, getLogin());
         getLogin().click();
-        testBase.implicitWait(10);
+        TestBase.implicitWait(10);
     }
 
     public boolean verifyDashboardLogo() {

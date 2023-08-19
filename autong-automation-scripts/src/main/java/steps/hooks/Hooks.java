@@ -5,7 +5,6 @@ import io.cucumber.java.*;
 
 public class Hooks {
 
-    TestBase testBase = new TestBase();
     static int pass, fail, skip;
 
     @Before
@@ -26,7 +25,7 @@ public class Hooks {
         } else if (status.equals(Status.SKIPPED)) {
             skip++;
         }
-        testBase.closeCurrentSession();
+        TestBase.closeCurrentSession();
     }
 
     @AfterAll

@@ -8,7 +8,6 @@
         <artifactId>AutoNG-app-tests</artifactId>
         <version>1.0.0</version>
     </parent>
-
     <artifactId>autong-automation-scripts</artifactId>
     <version>1.0.0</version>
 

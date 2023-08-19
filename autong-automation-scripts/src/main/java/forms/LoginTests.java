@@ -1,6 +1,7 @@
 package forms;
 
 import com.autong.base.PageBase;
+import com.autong.base.SeleniumFunctions;
 import com.autong.base.TestBase;
 import com.autong.utilities.annotations.ElementMeta;
 import com.autong.utilities.annotations.ObjectLoaderMeta;
@@ -9,6 +10,7 @@ import com.autong.utilities.annotations.WebSpecificField;
 import com.autong.utilities.fileOperations.PropertyManager;
 import com.autong.utilities.meta.LocateUsing;
 import com.autong.utilities.meta.Platform;
+import com.autong.utilities.meta.WaitCondition;
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,8 +33,8 @@ public class LoginTests extends PageBase {
     }
 
     @WebSpecificField
-    @WaitForLoad
     @ElementMeta(locateUsing = LocateUsing.XPATH, elementName = "username field", locator = USERNAME)
+    @WaitForLoad(waitForElement = WaitCondition.Visible)
     public WebElement username;
 
     @ElementMeta(locateUsing = LocateUsing.XPATH, elementName = "password field", locator = PASSWORD)
@@ -53,7 +55,7 @@ public class LoginTests extends PageBase {
     public void enterCredentials(String username, String password) {
         TestBase.waitForElementVisible(10, getUsername());
         getUsername().clear();
-        getUsername().sendKeys(username);
+        sendKeys_custom(getUsername(), "Username", username);
         TestBase.waitForElementToBeClickable(10, getPassword());
         getPassword().clear();
         getPassword().sendKeys(password);

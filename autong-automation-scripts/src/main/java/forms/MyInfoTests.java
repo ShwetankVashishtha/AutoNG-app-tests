@@ -1,6 +1,6 @@
 package forms;
 
-import com.autong.utilities.fileOperations.PropertyManager;
+import com.autong.utilities.PropertyManager;
 import lombok.Getter;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

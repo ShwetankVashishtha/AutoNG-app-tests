@@ -1,13 +1,12 @@
 package forms;
 
 import com.autong.base.PageBase;
-import com.autong.base.SeleniumFunctions;
 import com.autong.base.TestBase;
+import com.autong.utilities.PropertyManager;
 import com.autong.utilities.annotations.ElementMeta;
 import com.autong.utilities.annotations.ObjectLoaderMeta;
 import com.autong.utilities.annotations.WaitForLoad;
 import com.autong.utilities.annotations.WebSpecificField;
-import com.autong.utilities.fileOperations.PropertyManager;
 import com.autong.utilities.meta.LocateUsing;
 import com.autong.utilities.meta.Platform;
 import com.autong.utilities.meta.WaitCondition;
@@ -32,13 +31,16 @@ public class LoginTests extends PageBase {
         super(driver);
     }
 
-    @WebSpecificField
-    @ElementMeta(locateUsing = LocateUsing.XPATH, elementName = "username field", locator = USERNAME)
-    @WaitForLoad(waitForElement = WaitCondition.Visible)
-    public WebElement username;
+//    @WebSpecificField
+//    @ElementMeta(locateUsing = LocateUsing.XPATH, elementName = "username field", locator = USERNAME)
+//    @WaitForLoad(waitForElement = WaitCondition.Visible)
+//    public WebElement username;
 
-    @ElementMeta(locateUsing = LocateUsing.XPATH, elementName = "password field", locator = PASSWORD)
-    public WebElement password;
+    @FindBy(xpath = USERNAME)
+    private WebElement username;
+
+    @FindBy(xpath = PASSWORD)
+    private WebElement password;
 
     @FindBy(xpath = LOGIN)
     private WebElement login;

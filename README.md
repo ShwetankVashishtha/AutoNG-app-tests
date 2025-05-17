@@ -2,4 +2,4 @@ The sole purpose of this repository is to test out <a href="https://github.com/S
 
 <b>Execute tests</b><br>
 
-*     mvn clean install test -Dcucumber.filter.tags="@<login>"
+*     mvn clean install test -Dcucumber.filter.tags="@login"
